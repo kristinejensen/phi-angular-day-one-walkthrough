@@ -16,30 +16,26 @@
         <div class="form-group col-md-6">
           <label for="firstName">First Name</label>
           <input type="text" name="firstName" class="form-control" ng-model="phirePhiter.newPerson.firstName" placeholder="First Name"/>
-        </div>
-        <div class="form-group col-md-6">
           <label for="lastName">Last Name</label>
           <input type="text" name="lastName" class="form-control" ng-model="phirePhiter.newPerson.lastName" placeholder="Last Name"/>
-        </div>
-        <div class="form-group col-md-6">
           <label for="git_username">Github Username</label>
           <input type="text" name="git_username" class="form-control" ng-model="phirePhiter.newPerson.git_username" placeholder="Github Username"/>
-        </div>
-        <div class="form-group col-md-6">
           <label for="shoutout">Shoutout</label>
           <input type="text" name="shoutout" class="form-control" ng-model="phirePhiter.newPerson.shoutout" placeholder="Shoutout"/>
+          <button ng-click="phirePhiter.createPerson()">Submit</button>
         </div>
-        <button ng-click="phirePhiter.createPerson()">Submit</button>
       </form>
     </section>
     <section class="container">
+      <!-- line below: if you are going to use a variable, define the controller -->
+    <label>Search: <input ng-model="PhirePhiter.searchText"></label>
       <h3>Class List</h3>
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="thing in phirePhiter.people">
-          {{thing.firstName}}
-          {{thing.lastName}}
-          {{thing.git_username}}
-          {{thing.shoutout}}
+        <!-- this line gets ahold of every item in our array -->
+        <!-- the first time through, person is going to be the item thing in the array and so on -->
+        <li class="list-group-item" ng-repeat="person in phirePhiter.people| filter:PhirePhiter.searchText">
+          <!-- example of how to include an href with angular -->
+          <a ng-href="https://github.com/{{person.git_username}}"> {{person.firstName}} {{person.lastName}} - {{person.shoutout}}
         </li>
       </ul>
     </section>

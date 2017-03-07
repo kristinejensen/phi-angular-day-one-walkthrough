@@ -19,6 +19,7 @@ phirePhiterApp.controller('PhirePhiterController', function(){
   self.createPerson = function(){
     console.log(self.newPerson);
     self.people.push(angular.copy(self.newPerson));
+    self.newPerson = {}; // this line of code will clear out our input fields, but will add a bunch of empty objects if the button is pushed without input values
   };
 
 });
